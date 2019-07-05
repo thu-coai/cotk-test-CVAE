@@ -69,7 +69,6 @@ def main(args):
 		model = create_model(sess, data, args, embed)
 		if args.mode == "train":
 			model.train_process(sess, data, args)
-			return None
 		else:
 			multi_ref_res = model.test_multi_ref(sess, data, embed, args)
 			test_res = model.test_process(sess, data, args)
@@ -77,4 +76,6 @@ def main(args):
 			for key, val in test_res.items():
 				if isinstance(val, bytes):
 					test_res[key] = str(val)
-			return test_res
+			if os.path.exists("./result.json"):
+				test_res.update(json.load(open("./result.json", "r")))
+			json.dump(test_res, open("./result.json", "w"))
