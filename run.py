@@ -1,6 +1,6 @@
 # coding:utf-8
 
-def run(*argv):
+def run(argv):
 	import argparse
 	import time
 
