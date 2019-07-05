@@ -87,11 +87,11 @@ def run(argv):
 
 	from main import main
 
+	res = main(args)
 	if args.mode == 'test':
 		import json
-		json.dump({'working_dir': './', 'entry': 'run', 'args': argv}, \
-				  open("result.json", "w"))
-	main(args)
+		res.update({'working_dir': './', 'entry': 'run', 'args': argv})
+		json.dump(res, open("result.json", "w"))
 
 if __name__ == '__main__':
 	import sys
