@@ -76,5 +76,5 @@ def main(args):
 			test_res.update(json.load(open("result.json", "r")))
 			for key, val in test_res.items():
 				if isinstance(val, bytes):
-					test_res[key] = val.decode()
+					test_res[key] = str(val)
 			json.dump(test_res, open("result.json", "w"))
