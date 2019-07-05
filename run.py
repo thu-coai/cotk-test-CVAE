@@ -73,7 +73,7 @@ def run(argv):
 	args.dh_size = 400
 	args.lr = 1e-3
 	args.lr_decay = 0.995
-	args.batch_size = 3
+	args.batch_size = 32
 	args.grad_clip = 5.0
 	args.show_sample = [0]
 	args.min_vocab_times = 5
