@@ -523,9 +523,10 @@ class CVAEModel(object):
 						responses.append([])
 					# if data.eos_id in resp:
 					# 	resp = resp[:resp.index(data.eos_id)]
+					resp = data.trim_index(resp)
 					if len(resp) == 0:
 						resp = [data.unk_id]
-					responses[rid].append(resp)
+					responses[rid].append(resp + [data.eos_id])
 			metric_data = {'resp_allvocabs': process_cands(batch_data['candidate_allvocabs']), 'gen': responses}
 			prec_rec_metrics.forward(metric_data)
 
