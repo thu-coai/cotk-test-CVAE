@@ -74,4 +74,7 @@ def main(args):
 			test_res = model.test_process(sess, data, args)
 			test_res.update(multi_ref_res)
 			test_res.update(json.load(open("result.json", "r")))
+			for key, val in test_res.items():
+				if isinstance(val, bytes):
+					test_res[key] = val.decode()
 			json.dump(test_res, open("result.json", "w"))

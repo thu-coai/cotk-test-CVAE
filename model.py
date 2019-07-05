@@ -488,7 +488,7 @@ class CVAEModel(object):
 		with open(test_file, 'a') as f:
 			print("Test Result:")
 			for key, value in res.items():
-				if isinstance(value, float):
+				if isinstance(value, float) or isinstance(value, int):
 					print("\t%s:\t%f" % (key, value))
 					f.write("%s:\t%f\n" % (key, value))
 			for i, context in enumerate(res['context']):
@@ -535,7 +535,8 @@ class CVAEModel(object):
 			print("Test Multi Reference Result:")
 			f.write("Test Multi Reference Result:\n")
 			for key, val in res.items():
-				print("\t{}\t{}".format(key, val))
-				f.write("\t{}\t{}".format(key, val) + "\n")
+				if isinstance(val, float) or isinstance(val, int):
+					print("\t{}\t{}".format(key, val))
+					f.write("\t{}\t{}".format(key, val) + "\n")
 			f.write("\n")
 		return res
