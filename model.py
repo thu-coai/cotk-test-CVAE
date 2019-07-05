@@ -500,6 +500,7 @@ class CVAEModel(object):
 				f.write("\n")
 
 		print("result output to %s" % test_file)
+		return res
 
 	def test_multi_ref(self, sess, data, embed, args):
 		def process_cands(candidates):
@@ -537,3 +538,4 @@ class CVAEModel(object):
 				print("\t{}\t{}".format(key, val))
 				f.write("\t{}\t{}".format(key, val) + "\n")
 			f.write("\n")
+		return res
