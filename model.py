@@ -500,7 +500,7 @@ class CVAEModel(object):
 				f.write("\n")
 
 		print("result output to %s" % test_file)
-		return {key: val for key, val in res.items() if key not in ['context', 'reference']}
+		return {key: val for key, val in res.items() if key not in ['context', 'reference', 'gen']}
 
 	def test_multi_ref(self, sess, data, embed, args):
 		def process_cands(candidates):
