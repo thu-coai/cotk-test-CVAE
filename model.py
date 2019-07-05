@@ -509,7 +509,7 @@ class CVAEModel(object):
 				tmp = []
 				for sent in cands:
 					tmp.append([wid if wid < data.vocab_size else data.unk_id for wid in sent])
-				res.append(tmp)
+				res.append([data.go_id] + tmp + [data.eos_id])
 			return res
 		prec_rec_metrics = data.get_precision_recall_metric(sent_per_inst=args.repeat_N, embed=embed)
 		for batch_data in self.multi_reference_batches(data, args.batch_size):
@@ -520,8 +520,8 @@ class CVAEModel(object):
 					resp = list(resp)
 					if rid == len(responses):
 						responses.append([])
-					if data.eos_id in resp:
-						resp = resp[:resp.index(data.eos_id)]
+					# if data.eos_id in resp:
+					# 	resp = resp[:resp.index(data.eos_id)]
 					if len(resp) == 0:
 						resp = [data.unk_id]
 					responses[rid].append(resp)
