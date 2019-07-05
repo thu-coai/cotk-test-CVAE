@@ -508,8 +508,9 @@ class CVAEModel(object):
 			for cands in candidates:
 				tmp = []
 				for sent in cands:
-					tmp.append([wid if wid < data.vocab_size else data.unk_id for wid in sent])
-				res.append([data.go_id] + tmp + [data.eos_id])
+					tmp.append([data.go_id] + \
+						[wid if wid < data.vocab_size else data.unk_id for wid in sent] + [data.eos_id])
+				res.append(tmp)
 			return res
 		prec_rec_metrics = data.get_precision_recall_metric(sent_per_inst=args.repeat_N, embed=embed)
 		for batch_data in self.multi_reference_batches(data, args.batch_size):
