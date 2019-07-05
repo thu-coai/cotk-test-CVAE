@@ -500,7 +500,7 @@ class CVAEModel(object):
 				f.write("\n")
 
 		print("result output to %s" % test_file)
-		return res
+		return {key: val for key, val in res.items() if key != 'context'}
 
 	def test_multi_ref(self, sess, data, embed, args):
 		def process_cands(candidates):
