@@ -67,7 +67,7 @@ def run(argv):
 	args.da_embedding_size = 30
 	args.word_embedding_size = 200
 	args.session_window = 10
-	args.repeat_N = 20
+	args.repeat_N = 2
 	args.eh_size = 300
 	args.ch_size = 600
 	args.dh_size = 400
