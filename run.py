@@ -17,13 +17,13 @@ def run(argv):
 		help='"train" or "test". Default: train')
 	parser.add_argument('--dataset', type=str, default='SwitchboardCorpus',
 		help='Dataloader class. Default: SwitchboardCorpus')
-	parser.add_argument('--datapath', type=str, default='./tests/dataloader/dummy_switchboardcorpus',
+	parser.add_argument('--datapath', type=str, default='../../tests/dataloader/dummy_switchboardcorpus',
 		help='Directory for data set. Default: SwitchboardCorpus')
 	parser.add_argument('--epoch', type=int, default=1,
 		help="Epoch for trainning. Default: 100")
 	parser.add_argument('--wvclass', type=str, default='Glove',
 		help="Wordvector class, none for not using pretrained wordvec. Default: Glove")
-	parser.add_argument('--wvpath', type=str, default="./tests/wordvector/dummy_glove/300d",
+	parser.add_argument('--wvpath', type=str, default="../../tests/wordvector/dummy_glove/300d",
 		help="Directory for pretrained wordvector. Default: resources://Glove200d")
 
 	parser.add_argument('--out_dir', type=str, default="./output",
