@@ -88,13 +88,12 @@ def run(argv):
 	from main import main
 
 	main(args)
-	if args.mode == 'test':
-		import os
-		import json
-		res = {'working_dir': './', 'entry': 'run', 'args': argv}
-		if os.path.exists("./result.json"):
-			res.update(json.load(open("./result.json")))
-		json.dump(res, open("result.json", "w"))
+	import os
+	import json
+	res = {'working_dir': './', 'entry': 'run', 'args': argv}
+	if os.path.exists("./result.json"):
+		res.update(json.load(open("./result.json")))
+	json.dump(res, open("result.json", "w"))
 
 if __name__ == '__main__':
 	import sys
