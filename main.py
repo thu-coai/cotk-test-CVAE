@@ -75,4 +75,3 @@ def main(args):
 		for key, val in test_res.items():
 			if isinstance(val, bytes):
 				test_res[key] = str(val)
-		json.dump(test_res, open("./result.json", "w"))
