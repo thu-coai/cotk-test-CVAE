@@ -87,7 +87,7 @@ def run(argv):
 
 	from main import main
 
-	main(args)
+	# main(args)
 
 if __name__ == '__main__':
 	import sys
