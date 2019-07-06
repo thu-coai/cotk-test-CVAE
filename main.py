@@ -74,14 +74,6 @@ def main(args):
 			test_res = model.test_process(sess, data, args)
 			test_res.update(multi_ref_res)
 
-			# test hashvalue in multi-eval
-			_multi_ref_res = model.test_multi_ref(sess, data, embed, args)
-			_test_res = model.test_process(sess, data, args)
-			_test_res.update(_multi_ref_res)
-			for key in _test_res:
-				if key[-9:] == 'hashvalue':
-					assert _test_res[key] == test_res[key]
-
 			for key, val in test_res.items():
 				if isinstance(val, bytes):
 					test_res[key] = str(val)
