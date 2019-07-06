@@ -73,7 +73,7 @@ def run(argv):
 	args.dh_size = 400
 	args.lr = 1e-3
 	args.lr_decay = 0.995
-	args.batch_size = 32
+	args.batch_size = 3
 	args.grad_clip = 5.0
 	args.show_sample = [0]
 	args.min_vocab_times = 5
@@ -87,11 +87,14 @@ def run(argv):
 
 	from main import main
 
+	main(args)
 	if args.mode == 'test':
+		import os
 		import json
-		json.dump({'working_dir': './', 'entry': 'run', 'args': argv}, \
-				  open("result.json", "w"))
-	res = main(args)
+		res = {'working_dir': './', 'entry': 'run', 'args': argv}
+		if os.path.exists("./result.json"):
+			res.update(json.load(open("./result.json")))
+		json.dump(res, open("result.json", "w"))
 
 if __name__ == '__main__':
 	import sys
